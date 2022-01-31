@@ -1,9 +1,9 @@
 package threadSort;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -14,7 +14,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 
 @SuppressWarnings("serial")
-public class GeneratePanel extends JPanel{
+public class GeneratePanel extends JPanel {
 
 	
 	public GeneratePanel() {
@@ -46,13 +46,29 @@ public class GeneratePanel extends JPanel{
 
 		JTextField txtFile;
 		txtFile = new JTextField();
-		txtFile.setBounds(200,57,150,20);
+		txtFile.setBounds(200,57,125,20);
 		add(txtFile);
+		
+		JLabel lblFileExt;
+		lblFileExt = new JLabel();
+		lblFileExt.setText(".txt");
+		lblFileExt.setBounds(325,57,120,20);
+		add(lblFileExt);
 		
 		JButton btnStart;
 		btnStart = new JButton();
 		btnStart.setText("Start");
 		btnStart.setBounds(200,83,150,20);
+		btnStart.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				final int amount = Integer.parseInt(txtAmount.getText());
+				final String file = txtFile.getText();
+				new Generate(amount, file);
+			}
+			
+		});
 		add(btnStart);
 		
 	}

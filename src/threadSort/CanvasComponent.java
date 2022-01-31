@@ -1,20 +1,19 @@
 package threadSort;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 
 @SuppressWarnings("serial")
 public class CanvasComponent extends JComponent {
+
 	
 	static final int frameWidth = 400;
-	static final int frameHeigth = 500;
+	static final int frameHeigth = 530;
 	static final Color panelColor = new Color(180,255,180);
 	
 	public CanvasComponent() {
@@ -24,7 +23,16 @@ public class CanvasComponent extends JComponent {
 		add(new GeneratePanel());
 		add(new ReadPanel());
 		add(new SortPanel());		
-		add(new TimePanel());		
+		add(new StatusPanel());	
+		
+		JButton btnQuit = new JButton("Quit");
+		btnQuit.setBounds(215, 490, 150, 25);
+		btnQuit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		this.add(btnQuit);
 
 	}
 }

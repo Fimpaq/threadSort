@@ -10,11 +10,14 @@ import javax.swing.JProgressBar;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
-public class TimePanel extends JPanel {
+public class StatusPanel extends JPanel {
 	
+	private static JLabel lblTime;
+	static JProgressBar pb;
+	private static JLabel lblStatus;
 
 	
-	public TimePanel() {
+	public StatusPanel() {
 
 		this.setLayout(null);
 		setBounds(15, 362, 370, 115);
@@ -22,13 +25,11 @@ public class TimePanel extends JPanel {
 				
 		this.setBorder(new EmptyBorder(0,0,0,0));		
 				
-		JLabel lblTime;
 		lblTime = new JLabel();
 		lblTime.setText("Dauer:");
 		lblTime.setBounds(20,22,150,20);
 		add(lblTime);
 		
-		JProgressBar pb;
 		pb = new JProgressBar();
 		pb.setValue(0);
 		pb.setStringPainted(true);  
@@ -36,12 +37,21 @@ public class TimePanel extends JPanel {
 		pb.setBounds(20,49,330,20);
 		add(pb);
 		
-		JLabel lblStatus;
 		lblStatus = new JLabel();
 		lblStatus.setText("[Status]");
-		lblStatus.setBounds(20,75,150,20);
+		lblStatus.setBounds(20,75,300,20);
 		add(lblStatus);
 	}
+	
+	public static void setStatus(final String text) {
+		lblStatus.setText(text);
+	}
+	
+	public static void setTime(final String text) {
+		lblTime.setText("Dauer: " + text);
+	}
+	
+
 	
 	@Override
 	public void paintComponent(final Graphics graphics) {

@@ -17,16 +17,17 @@ public class SortFrame extends JFrame{
 	
 	public SortFrame() {
 		this.setLayout(null);
+		
 		contentPane = new CanvasComponent();
 		this.setContentPane(contentPane);
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLocationRelativeTo(null);
 		this.setResizable(false);	
 		this.setBackground(new Color(255,220,220));
+		this.setLocationRelativeTo(null);
 		
 		this.pack();
 		this.setVisible(true);
 	}
-
+	
 }
