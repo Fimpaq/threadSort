@@ -2,6 +2,8 @@ package threadSort;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -39,6 +41,16 @@ public class ReadPanel extends JPanel {
 		btnStart = new JButton();
 		btnStart.setText("Start");
 		btnStart.setBounds(200,57,150,20);
+//		btnStart.setBackground(SortFrame.frameColor);
+		btnStart.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String file = txtFile.getText();
+				new Read(file);
+			}
+			
+		});
 		add(btnStart);
 		
 	}

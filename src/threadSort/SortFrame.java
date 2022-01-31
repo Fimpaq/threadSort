@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public class SortFrame extends JFrame{
 	
+	final static Color frameColor = new Color(255,220,220);
 	JComponent contentPane;
 	
 	public static void main(final String[] args) {
@@ -23,7 +24,7 @@ public class SortFrame extends JFrame{
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);	
-		this.setBackground(new Color(255,220,220));
+		this.setBackground(frameColor);
 		this.setLocationRelativeTo(null);
 		
 		this.pack();

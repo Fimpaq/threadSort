@@ -39,6 +39,7 @@ public class SortPanel extends JPanel {
 		btnStart = new JButton();
 		btnStart.setText("Start");
 		btnStart.setBounds(200,57,150,20);
+//		btnStart.setBackground(SortFrame.frameColor);
 		add(btnStart);
 		
 	}
