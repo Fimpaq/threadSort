@@ -13,23 +13,26 @@ public class Generate {
 	final int amount;
 	final String file;
 	public static List<Integer> list;
+	private long start;
+	private long time;
 
 	public Generate(final int amount, final String file) {
 		this.amount = amount;
 		this.file = file;
-		StatusPanel.pb.setMaximum(amount * 2);
+		StatusPanel.pb.setMaximum(amount * 3);
 
 		new Thread(new Runnable() {
 
 			@Override
 			public void run() {
 				try {					
-					
+					StatusPanel.pb.setValue(0);
+					start = System.currentTimeMillis();
 					StatusPanel.setStatus(makeList());
 					Thread.sleep(500);
 					StatusPanel.setStatus(writeFile());
 
-					
+					StatusPanel.setStatus(createOutput());
 				
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -47,8 +50,6 @@ public class Generate {
 	}
 
 	private String makeList() {		
-		long start = System.currentTimeMillis();
-		long time;
 		StatusPanel.setStatus("generating List ...");
 		
 		Random random = new Random();
@@ -61,12 +62,10 @@ public class Generate {
 			StatusPanel.setTime(timeToReadableString(time));
 		}		
 		
-		return "generating List ... done";
+		return "generating List done!";
 	}
 
 	private String writeFile() {
-		long start = System.currentTimeMillis();
-		long time;
 		StatusPanel.setStatus("writing File ... ");
 		
 		Path p = Paths.get(this.file + ".txt");
@@ -80,7 +79,7 @@ public class Generate {
 			for (int i = 0; i < amount; i++) {
 				Files.write(p, list.get(i).toString().getBytes(), StandardOpenOption.APPEND);
 				Files.write(p, System.lineSeparator().getBytes(), StandardOpenOption.APPEND);
-				StatusPanel.pb.setValue(1 + amount + i);
+				StatusPanel.pb.setValue(amount + i);
 				time = System.currentTimeMillis() - start;
 				StatusPanel.setTime(timeToReadableString(time));
 			}
@@ -89,6 +88,23 @@ public class Generate {
 			e.printStackTrace();
 		}	
 		return "written to: " + p.toString();
+	}
+	
+	private String createOutput() {	
+
+		StatusPanel.setStatus("creating OutputList ...");
+
+		CanvasComponent.listModel.addAll(list); // anders führt zu arrayindexoutofboundsexception
+//		for(int i = 0; i < list.size()-10; i++) {
+//			CanvasComponent.listModel.addElement(list.get(i));
+//			StatusPanel.pb.setValue((1 + 2*amount) + i);
+//			time = System.currentTimeMillis() - start;
+//			StatusPanel.setTime(timeToReadableString(time));
+//		}	
+		
+		StatusPanel.pb.setValue((1 + 3*amount));
+		StatusPanel.pb.setString("done");
+		return "OutputList done!";
 	}
 	
 }

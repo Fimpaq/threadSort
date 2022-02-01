@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 public class SortFrame extends JFrame{
 	
 	final static Color frameColor = new Color(255,220,220);
-	JComponent contentPane;
+	static JComponent contentPane;
 	
 	public static void main(final String[] args) {
 		new SortFrame();		
@@ -30,5 +30,4 @@ public class SortFrame extends JFrame{
 		this.pack();
 		this.setVisible(true);
 	}
-	
 }

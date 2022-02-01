@@ -11,6 +11,8 @@ public class Read {
 	public int amount;
 	final String file;
 	private List<Integer> list;
+	long start;
+	long time;
 	
 	public Read(final String file) {
 		this.file = file;
@@ -19,6 +21,7 @@ public class Read {
 
 			@Override
 			public void run() {
+				start = System.currentTimeMillis();
 				StatusPanel.setStatus(readFile());
 			}
 			
@@ -37,8 +40,6 @@ public class Read {
 
 	public String readFile() {
 		StatusPanel.setStatus("reading File ...");
-		long start = System.currentTimeMillis();
-		long time;
 		
 		try {
 			Path p = Paths.get(file);
@@ -46,7 +47,6 @@ public class Read {
 			List<String> data = Files.readAllLines(p);
 			this.amount = data.size();
 			StatusPanel.pb.setMaximum(this.amount);
-
 			
 			list = new ArrayList<>();
 			

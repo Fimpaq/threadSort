@@ -49,8 +49,7 @@ public class StatusPanel extends JPanel {
 	
 	public static void setTime(final String text) {
 		lblTime.setText("Dauer: " + text);
-	}
-	
+	}	
 
 	
 	@Override

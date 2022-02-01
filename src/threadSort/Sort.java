@@ -1,15 +1,25 @@
 //package threadSort;
 //
-//import list.MyArrayList;
-//import list.MyList;
+//import java.util.ArrayList;
+//import java.util.List;
 //
 //public class Sort {
-//
-//	public static <T extends Comparable<T>> void mergeSort(final MyList<T> list) {
-//		divide(0, list.getSize() - 1, list);
+//	
+//	static List<Integer> list;
+//	
+//	public Sort(final List<Integer> l) {
+//		list = l;
+//	}	
+//	
+//	public static void main(String[] args) {
+//		mergeSort();
 //	}
 //
-//	private static <T extends Comparable<T>> MyList<T> divide(final int startIndex, final int endIndex, final MyList<T> list) {
+//	public static void mergeSort() {
+//		divide(0, list.size() - 1, list);
+//	}
+//
+//	private static List<Integer> divide(int startIndex, int endIndex, List<Integer> list) {
 //		if (startIndex < endIndex && (endIndex - startIndex) >= 1) {
 //			int mid = (endIndex + startIndex) / 2;
 //			divide(startIndex, mid, list);
@@ -20,15 +30,15 @@
 //		return list;
 //	}
 //
-//	private static <T extends Comparable<T>> void merger(final int startIndex, final int midIndex, final int endIndex, final MyList<T> list) {
-//		MyList<T> mergedSortedArray = new MyArrayList<>();
+//	private static void merger(final int startIndex, final int midIndex, final int endIndex, final List<Integer> list) {
+//		List<Integer> mergedSortedArray = new ArrayList<>();
 //
 //		int leftIndex = startIndex;
 //		int rightIndex = midIndex + 1;
 //
 //		while (leftIndex <= midIndex && rightIndex <= endIndex) {
 ////			if ((list.get(leftIndex)).compareTo(list.get(rightIndex)) <= 0) { // if (list.get(leftIndex) <= list.get(rightIndex)) {
-//			if (doCompare(list.get(leftIndex), list.get(rightIndex), null) <= 0) {
+//			if (list.get(leftIndex) <= list.get(rightIndex)) {
 //				mergedSortedArray.add(list.get(leftIndex));
 //				leftIndex++;
 //			} else {
@@ -50,10 +60,9 @@
 //		int i = 0;
 //		int j = startIndex;
 //
-//		while (i < mergedSortedArray.getSize()) {
-//			list.set(mergedSortedArray.get(i++), j);
+//		while (i < mergedSortedArray.size()) {
+//			list.set(j, mergedSortedArray.get(i++));
 //			j++;
 //		}
 //	}
-//	
 //}
