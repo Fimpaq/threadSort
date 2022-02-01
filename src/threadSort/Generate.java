@@ -12,7 +12,7 @@ public class Generate {
 
 	final int amount;
 	final String file;
-	private List<Integer> list;
+	public static List<Integer> list;
 
 	public Generate(final int amount, final String file) {
 		this.amount = amount;
@@ -27,7 +27,9 @@ public class Generate {
 					
 					StatusPanel.setStatus(makeList());
 					Thread.sleep(500);
-					StatusPanel.setStatus(writeFile());					
+					StatusPanel.setStatus(writeFile());
+
+					
 				
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -53,7 +55,7 @@ public class Generate {
 		list = new ArrayList<>();
 		
 		for (int i = 0; i < this.amount; i++) {
-			this.list.add(random.nextInt());			
+			list.add(random.nextInt());			
 			StatusPanel.pb.setValue(i);
 			time = System.currentTimeMillis() - start;
 			StatusPanel.setTime(timeToReadableString(time));
@@ -76,7 +78,7 @@ public class Generate {
 			}
 			
 			for (int i = 0; i < amount; i++) {
-				Files.write(p, this.list.get(i).toString().getBytes(), StandardOpenOption.APPEND);
+				Files.write(p, list.get(i).toString().getBytes(), StandardOpenOption.APPEND);
 				Files.write(p, System.lineSeparator().getBytes(), StandardOpenOption.APPEND);
 				StatusPanel.pb.setValue(1 + amount + i);
 				time = System.currentTimeMillis() - start;

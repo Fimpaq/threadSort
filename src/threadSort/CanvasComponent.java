@@ -12,7 +12,7 @@ import javax.swing.JComponent;
 public class CanvasComponent extends JComponent {
 
 	
-	static final int frameWidth = 400;
+	static final int frameWidth = 570;
 	static final int frameHeigth = 530;
 	static final Color panelColor = new Color(180,255,180);
 	
@@ -33,6 +33,7 @@ public class CanvasComponent extends JComponent {
 			}
 		});
 		this.add(btnQuit);
-
+		
+		
 	}
 }

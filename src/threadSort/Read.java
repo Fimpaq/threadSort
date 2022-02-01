@@ -19,12 +19,10 @@ public class Read {
 
 			@Override
 			public void run() {
-				StatusPanel.setStatus(readFile());				
+				StatusPanel.setStatus(readFile());
 			}
 			
 		}).start();
-		
-		readFile();
 	}
 	
 	
