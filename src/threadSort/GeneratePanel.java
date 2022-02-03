@@ -21,42 +21,35 @@ public class GeneratePanel extends JPanel {
 		setBounds(15, 20, 370, 115);
 		setVisible(true);
 
-		Border border = BorderFactory.createSoftBevelBorder(BevelBorder.LOWERED);
+		final Border border = BorderFactory.createSoftBevelBorder(BevelBorder.LOWERED);
 		this.setBorder(BorderFactory.createTitledBorder(border, " generieren "));
 
-		JLabel lblAmount;
-		lblAmount = new JLabel();
+		final JLabel lblAmount = new JLabel();
 		lblAmount.setText("Anzahl der Elemente:");
 		lblAmount.setBounds(20, 30, 150, 20);
 		add(lblAmount);
 
-		JTextField txtAmount;
-		txtAmount = new JTextField();
+		final JTextField txtAmount = new JTextField();
 		txtAmount.setBounds(200, 30, 150, 20);
 		add(txtAmount);
 
-		JLabel lblfile;
-		lblfile = new JLabel();
+		final JLabel lblfile = new JLabel();
 		lblfile.setText("Ausgabedatei:");
 		lblfile.setBounds(20, 57, 150, 20);
 		add(lblfile);
 
-		JTextField txtFile;
-		txtFile = new JTextField();
+		final JTextField txtFile = new JTextField();
 		txtFile.setBounds(200, 57, 125, 20);
 		add(txtFile);
 
-		JLabel lblFileExt;
-		lblFileExt = new JLabel();
+		final JLabel lblFileExt = new JLabel();
 		lblFileExt.setText(".txt");
 		lblFileExt.setBounds(325, 57, 120, 20);
 		add(lblFileExt);
 
-		JButton btnStart;
-		btnStart = new JButton();
+		final JButton btnStart = new JButton();
 		btnStart.setText("Start");
 		btnStart.setBounds(200, 83, 150, 20);
-//		btnStart.setBackground(SortFrame.frameColor);
 		btnStart.addActionListener(new ActionListener() {
 
 			@Override

@@ -12,7 +12,7 @@ public class FakeSort {
 		mergeSort();
 	}
 
-	public void umkopieren() {
+	private void umkopieren() {
 		Generate.list = this.l;
 		CanvasComponent.listModel.removeAllElements();
 		CanvasComponent.listModel.addAll(l);

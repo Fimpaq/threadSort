@@ -15,7 +15,6 @@ public class StatusPanel extends JPanel {
 	private static JLabel lblTime;
 	static JProgressBar pb;
 	private static JLabel lblStatus;
-
 	
 	public StatusPanel() {
 
@@ -32,8 +31,7 @@ public class StatusPanel extends JPanel {
 		
 		pb = new JProgressBar();
 		pb.setValue(0);
-		pb.setStringPainted(true);  
-		
+		pb.setStringPainted(true);		
 		pb.setBounds(20,49,330,20);
 		add(pb);
 		

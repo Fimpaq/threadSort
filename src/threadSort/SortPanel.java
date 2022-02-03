@@ -21,27 +21,21 @@ public class SortPanel extends JPanel {
 		setBounds(15, 255, 370, 90);
 		setVisible(true);		
 		
-		Border border = BorderFactory.createSoftBevelBorder(BevelBorder.LOWERED);
+		final Border border = BorderFactory.createSoftBevelBorder(BevelBorder.LOWERED);
 		this.setBorder(BorderFactory.createTitledBorder(border, " sortieren "));		
 		
-		
-		JLabel lblThreads;
-		lblThreads = new JLabel();
+		final JLabel lblThreads = new JLabel();
 		lblThreads.setText("Anzahl Threads:");
 		lblThreads.setBounds(20,30,150,20);
 		add(lblThreads);
 		
-		JTextField txtThreads;
-		txtThreads = new JTextField();
+		final JTextField txtThreads = new JTextField();
 		txtThreads.setBounds(200,30,150,20);
 		add(txtThreads);
 
-		
-		JButton btnStart;
-		btnStart = new JButton();
+		final JButton btnStart = new JButton();
 		btnStart.setText("Start");
 		btnStart.setBounds(200,57,150,20);
-//		btnStart.setBackground(SortFrame.frameColor);
 		btnStart.addActionListener(new ActionListener() {
 
 			@Override

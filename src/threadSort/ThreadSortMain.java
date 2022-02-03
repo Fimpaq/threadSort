@@ -2,29 +2,22 @@ package threadSort;
 
 import java.awt.Color;
 
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 
 @SuppressWarnings("serial")
-public class SortFrame extends JFrame{
-	
-	final static Color frameColor = new Color(255,220,220);
-	static JComponent contentPane;
+public class ThreadSortMain extends JFrame{
 	
 	public static void main(final String[] args) {
-		new SortFrame();		
+		new ThreadSortMain();		
 	}
 	
-	public SortFrame() {
+	public ThreadSortMain() {
 		this.setLayout(null);
-		
-		contentPane = new CanvasComponent();
-		this.setContentPane(contentPane);
-
+		this.setContentPane(new CanvasComponent());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);	
-		this.setBackground(frameColor);
+		this.setBackground(new Color(255,220,220));
 		this.setLocationRelativeTo(null);
 		
 		this.pack();

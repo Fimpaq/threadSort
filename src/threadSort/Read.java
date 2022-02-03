@@ -7,32 +7,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Read {
-	
+
 	public int amount;
 	final String file;
-	private List<Integer> list;
+//	private List<Integer> list;
 	long start;
 	long time;
-	
+
 	public Read(final String file) {
 		this.file = file;
-		
+
 		new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-				start = System.currentTimeMillis();
-				StatusPanel.setStatus(readFile());
+				try {
+					StatusPanel.pb.setValue(0);
+					start = System.currentTimeMillis();
+					StatusPanel.setStatus(readFile());
+					Thread.sleep(50);
+					StatusPanel.setStatus(createOutput());
+					
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
-			
+
 		}).start();
 	}
-	
-	
-	
+
 	private String timeToReadableString(final long time) {
-		if(time > 1000) {
-			return (double)time / 1000 + "s";
+		if (time > 1000) {
+			return (double) time / 1000 + "s";
 		} else {
 			return time + "ms";
 		}
@@ -40,28 +46,46 @@ public class Read {
 
 	public String readFile() {
 		StatusPanel.setStatus("reading File ...");
-		
+
 		try {
 			Path p = Paths.get(file);
 
 			List<String> data = Files.readAllLines(p);
 			this.amount = data.size();
 			StatusPanel.pb.setMaximum(this.amount);
-			
-			list = new ArrayList<>();
-			
+
+			Generate.list = new ArrayList<>();
+
 			for (int i = 0; i < amount; i++) {
-				list.add(Integer.parseInt(data.get(i)));
+				Generate.list.add(Integer.parseInt(data.get(i)));
 				StatusPanel.pb.setValue(i);
 				time = System.currentTimeMillis() - start;
 				StatusPanel.setTime(timeToReadableString(time));
 			}
-			
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return "just read " + this.amount + " Lines";
 	}
+
+	private String createOutput() {
+
+		StatusPanel.setStatus("creating OutputList ...");
+
+		CanvasComponent.listModel.addAll(Generate.list); // anders führt zu arrayindexoutofboundsexception
+//		for(int i = 0; i < list.size()-10; i++) {
+//			CanvasComponent.listModel.addElement(list.get(i));
+//			StatusPanel.pb.setValue((1 + 2*amount) + i);
+//			time = System.currentTimeMillis() - start;
+//			StatusPanel.setTime(timeToReadableString(time));
+//		}	
+
+		StatusPanel.pb.setValue((1 + 3 * amount));
+		StatusPanel.pb.setString("done");
+		return "OutputList done!";
+	}
+	
+	
 }

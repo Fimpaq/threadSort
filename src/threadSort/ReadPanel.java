@@ -21,27 +21,21 @@ public class ReadPanel extends JPanel {
 		setBounds(15, 150, 370, 90);
 		setVisible(true);		
 		
-		Border border = BorderFactory.createSoftBevelBorder(BevelBorder.LOWERED);
+		final Border border = BorderFactory.createSoftBevelBorder(BevelBorder.LOWERED);
 		this.setBorder(BorderFactory.createTitledBorder(border, " einlesen "));		
-		
-		
-		JLabel lblFile;
-		lblFile = new JLabel();
+				
+		final JLabel lblFile = new JLabel();
 		lblFile.setText("Eingabedatei:");
 		lblFile.setBounds(20,30,150,20);
 		add(lblFile);
 		
-		JTextField txtFile;
-		txtFile = new JTextField();
+		final JTextField txtFile = new JTextField();
 		txtFile.setBounds(200,30,150,20);
 		add(txtFile);
 
-		
-		JButton btnStart;
-		btnStart = new JButton();
+		final JButton btnStart = new JButton();
 		btnStart.setText("Start");
 		btnStart.setBounds(200,57,150,20);
-//		btnStart.setBackground(SortFrame.frameColor);
 		btnStart.addActionListener(new ActionListener() {
 
 			@Override

@@ -29,9 +29,9 @@ public class Generate {
 					StatusPanel.pb.setValue(0);
 					start = System.currentTimeMillis();
 					StatusPanel.setStatus(makeList());
-					Thread.sleep(500);
+					Thread.sleep(50);
 					StatusPanel.setStatus(writeFile());
-
+					Thread.sleep(50);
 					StatusPanel.setStatus(createOutput());
 				
 				} catch (InterruptedException e) {
