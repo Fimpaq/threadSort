@@ -5,23 +5,23 @@ import java.util.List;
 
 public class FakeSort {
 
-	List<Integer> l;
+	private List<Integer> l;
 
 	public FakeSort(final List<Integer> l) {
 		this.l = l;
 		mergeSort();
 	}
-
-	private void umkopieren() {
-		Generate.list = this.l;
-		CanvasComponent.listModel.removeAllElements();
-		CanvasComponent.listModel.addAll(l);
-		System.out.println("funktioniert");
-	}
-
-	public void mergeSort() {
+	
+	private void mergeSort() {
 		divide(0, this.l.size() - 1, l);
 		umkopieren();
+	}
+
+	private void umkopieren() {
+		Work.list = this.l;
+		CanvasComponent.listModel.removeAllElements();
+		CanvasComponent.listModel.addAll(l);
+		System.err.println("funktioniert");
 	}
 
 	private static List<Integer> divide(int startIndex, int endIndex, List<Integer> list) {

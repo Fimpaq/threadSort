@@ -69,7 +69,7 @@ public class GeneratePanel extends JPanel {
 					} else {
 						final int amount = Integer.parseInt(txtAmount.getText());
 						final String file = txtFile.getText();
-						new Generate(amount, file);
+						new Work(amount, file);
 					}
 				}
 			}

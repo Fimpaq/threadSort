@@ -41,7 +41,7 @@ public class ReadPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String file = txtFile.getText();
-				new Read(file);
+				new Work(file);
 			}
 			
 		});

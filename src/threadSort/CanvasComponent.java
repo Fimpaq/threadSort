@@ -60,8 +60,5 @@ public class CanvasComponent extends JComponent {
 		add(new StatusPanel());	
 		add(btnQuit);
 		add(scrollPane);
-		
-		
-		
 	}
 }

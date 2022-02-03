@@ -40,7 +40,7 @@ public class SortPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new FakeSort(Generate.list);
+				new FakeSort(Work.list);
 			}
 			
 		});

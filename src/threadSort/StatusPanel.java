@@ -13,7 +13,7 @@ import javax.swing.border.EmptyBorder;
 public class StatusPanel extends JPanel {
 	
 	private static JLabel lblTime;
-	static JProgressBar pb;
+	protected static JProgressBar pb;
 	private static JLabel lblStatus;
 	
 	public StatusPanel() {

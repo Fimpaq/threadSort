@@ -8,15 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Generate {
+public class Work {
 
-	final int amount;
+	private int amount;
 	final String file;
-	public static List<Integer> list;
+	protected static List<Integer> list;
 	private long start;
 	private long time;
-
-	public Generate(final int amount, final String file) {
+	
+	public Work(final int amount, final String file) {
 		this.amount = amount;
 		this.file = file;
 		StatusPanel.pb.setMaximum(amount * 3);
@@ -40,6 +40,29 @@ public class Generate {
 			}			
 		}).start();	
 	}
+	
+	public Work(final String file) {
+		this.file = file;
+		// set amount geht hier nicht!
+
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					StatusPanel.pb.setValue(0);
+					start = System.currentTimeMillis();
+					StatusPanel.setStatus(readFile());
+					Thread.sleep(50);
+					StatusPanel.setStatus(createOutput());
+					
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+
+		}).start();
+	}	
 	
 	private String timeToReadableString(final long time) {
 		if(time > 1000) {
@@ -90,22 +113,40 @@ public class Generate {
 		return "written to: " + p.toString();
 	}
 	
+	private String readFile() {
+		StatusPanel.setStatus("reading File ...");
+
+		try {
+			Path p = Paths.get(file);
+
+			List<String> data = Files.readAllLines(p);
+			this.amount = data.size();
+			StatusPanel.pb.setMaximum(this.amount * 2);
+
+			list = new ArrayList<>();
+
+			for (int i = 0; i < amount; i++) {
+				list.add(Integer.parseInt(data.get(i)));
+				StatusPanel.pb.setValue(i);
+				time = System.currentTimeMillis() - start;
+				StatusPanel.setTime(timeToReadableString(time));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "just read " + this.amount + " Lines";
+	}
+	
 	private String createOutput() {	
 
 		StatusPanel.setStatus("creating OutputList ...");
 
-		CanvasComponent.listModel.addAll(list); // anders führt zu arrayindexoutofboundsexception
-//		for(int i = 0; i < list.size()-10; i++) {
-//			CanvasComponent.listModel.addElement(list.get(i));
-//			StatusPanel.pb.setValue((1 + 2*amount) + i);
-//			time = System.currentTimeMillis() - start;
-//			StatusPanel.setTime(timeToReadableString(time));
-//		}	
+		CanvasComponent.listModel.addAll(list); // forEach produziert fehler
 		
 		StatusPanel.pb.setValue((1 + 3*amount));
 		StatusPanel.pb.setString("done");
 		return "OutputList done!";
 	}
-	
 }
-
