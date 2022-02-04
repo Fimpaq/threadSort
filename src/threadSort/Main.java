@@ -8,18 +8,16 @@ import javax.swing.JFrame;
 
 
 @SuppressWarnings("serial")
-public class ThreadSortMain extends JFrame{
+public class Main extends JFrame{
 	
 	static ExecutorService executor;
 	
 	public static void main(final String[] args) {
 		executor = Executors.newFixedThreadPool(1);
-		new ThreadSortMain();		
+		new Main();		
 	}
 	
-	
-	
-	public ThreadSortMain() {
+	public Main() {
 		this.setLayout(null);
 		this.setContentPane(new CanvasComponent());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

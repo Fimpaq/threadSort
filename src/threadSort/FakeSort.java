@@ -1,5 +1,9 @@
 package threadSort;
 
+/*
+ * legacy, deprecated, unused
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -8,6 +12,7 @@ import java.util.concurrent.Executors;
 public class FakeSort {
 
 	private List<Integer> l;
+	@SuppressWarnings("unused")
 	private final ExecutorService mergeExec;	
 	
 	private long start;
@@ -27,7 +32,7 @@ public class FakeSort {
 				StatusPanel.setStatus(mergeSort());
 			}			
 		};		
-		ThreadSortMain.executor.execute(runn);
+		Main.executor.execute(runn);
 		
 	}
 	

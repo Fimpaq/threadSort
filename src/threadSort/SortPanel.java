@@ -16,7 +16,7 @@ import javax.swing.border.Border;
 @SuppressWarnings("serial")
 public class SortPanel extends JPanel {
 	
-	int threadAmount = 1;
+	static int threadAmount = 1;
 	
 	public SortPanel() {
 		
@@ -58,7 +58,7 @@ public class SortPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new MultiSort(Work.list, threadAmount);
+				new Sort(Work.list);
 			}
 			
 		});

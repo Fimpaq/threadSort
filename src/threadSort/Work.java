@@ -39,7 +39,7 @@ public class Work {
 				}
 			}			
 		};
-		ThreadSortMain.executor.execute(runn);
+		Main.executor.execute(runn);
 	}
 	
 	public Work(final String file) {
@@ -60,7 +60,7 @@ public class Work {
 			}
 
 		};
-		ThreadSortMain.executor.execute(runn);
+		Main.executor.execute(runn);
 	}	
 	
 	private String timeToReadableString(final long time) {
