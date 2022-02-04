@@ -20,13 +20,13 @@ public class Work {
 		this.amount = amount;
 		this.file = file;
 		StatusPanel.pb.setMaximum(amount * 3);
+		StatusPanel.pb.setValue(0);
 
-		new Thread(new Runnable() {
+		Runnable runn = new Runnable() {
 
 			@Override
 			public void run() {
 				try {					
-					StatusPanel.pb.setValue(0);
 					start = System.currentTimeMillis();
 					StatusPanel.setStatus(makeList());
 					Thread.sleep(50);
@@ -38,19 +38,17 @@ public class Work {
 					e.printStackTrace();
 				}
 			}			
-		}).start();	
+		};
+		ThreadSortMain.executor.execute(runn);
 	}
 	
 	public Work(final String file) {
 		this.file = file;
-		// set amount geht hier nicht!
 
-		new Thread(new Runnable() {
-
+		Runnable runn = new Runnable() {
 			@Override
 			public void run() {
 				try {
-					StatusPanel.pb.setValue(0);
 					start = System.currentTimeMillis();
 					StatusPanel.setStatus(readFile());
 					Thread.sleep(50);
@@ -61,7 +59,8 @@ public class Work {
 				}
 			}
 
-		}).start();
+		};
+		ThreadSortMain.executor.execute(runn);
 	}	
 	
 	private String timeToReadableString(final long time) {
@@ -146,7 +145,7 @@ public class Work {
 		CanvasComponent.listModel.addAll(list); // forEach produziert fehler
 		
 		StatusPanel.pb.setValue((1 + 3*amount));
-		StatusPanel.pb.setString("done");
+//		StatusPanel.pb.setString("done");
 		return "OutputList done!";
 	}
 }

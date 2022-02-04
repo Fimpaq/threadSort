@@ -7,14 +7,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 
 @SuppressWarnings("serial")
 public class SortPanel extends JPanel {
+	
+	int threadAmount = 1;
+	
 	public SortPanel() {
 		
 		this.setLayout(null);
@@ -28,10 +31,25 @@ public class SortPanel extends JPanel {
 		lblThreads.setText("Anzahl Threads:");
 		lblThreads.setBounds(20,30,150,20);
 		add(lblThreads);
+
+		Integer[] threads = {1,2,3,4};
+		final JComboBox<Integer> cbxThreadCount = new JComboBox<Integer>(threads);
+		cbxThreadCount.setBounds(200,30,150,20);
+		cbxThreadCount.setSelectedIndex(0);
+		cbxThreadCount.addActionListener(new ActionListener() {		
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+				threadAmount = cbxThreadCount.getSelectedIndex() + 1;
+			}
+			
+		});
+		add(cbxThreadCount);
 		
-		final JTextField txtThreads = new JTextField();
-		txtThreads.setBounds(200,30,150,20);
-		add(txtThreads);
+		
+//		final JTextField txtThreads = new JTextField();
+//		txtThreads.setBounds(200,30,150,20);
+//		add(txtThreads);
 
 		final JButton btnStart = new JButton();
 		btnStart.setText("Start");
@@ -40,7 +58,7 @@ public class SortPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new FakeSort(Work.list);
+				new MultiSort(Work.list, threadAmount);
 			}
 			
 		});
